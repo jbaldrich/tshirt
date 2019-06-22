@@ -1,0 +1,31 @@
+{
+    "name": "jacobaldrich/tshirt",
+    "description": "A simple bounded context to CRUD T-shirts in DDD",
+    "type": "package",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jaco Baldrich",
+            "email": "hello@jacobaldrich.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=7.1",
+        "ramsey/uuid": "^3.8",
+        "moneyphp/money": "^3.0@dev"
+    },
+    "autoload": {
+        "psr-4": {
+            "JacoBaldrich\\TShirt\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JacoBaldrich\\TShirt\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true
+    }
+}
