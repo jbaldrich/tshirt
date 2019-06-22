@@ -10,11 +10,11 @@
 
 namespace JacoBaldrich\TShirt\TShirt\Domain;
 
-use JacoBaldrich\TShirt\TShirt\Shared\Uuid;
+use JacoBaldrich\TShirt\TShirt\Shared\UuidValueObject;
 
 /**
  * T-shirt Variant Id Value Object.
  */
-final class TShirtVariantId extends Uuid
+final class TShirtVariantId extends UuidValueObject
 {
 }

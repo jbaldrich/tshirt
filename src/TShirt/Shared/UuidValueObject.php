@@ -12,7 +12,7 @@ namespace JacoBaldrich\TShirt\TShirt\Shared;
 
 use Ramsey\Uuid\Uuid;
 
-abstract class Uuid
+abstract class UuidValueObject
 {
 
 	/**
@@ -23,10 +23,11 @@ abstract class Uuid
 	/**
 	 * Constructor.
 	 *
-	 * @param string $value
+	 * @param string|null $value
 	 */
-	public function __construct( string $value )
+	public function __construct( ?string $value = null )
 	{
+		$value = $value ?? ( Uuid::uuid4() )->toString();
 		$this->validate( $value );
 		$this->value = $value;
 	}
