@@ -10,6 +10,9 @@
 
 namespace JacoBaldrich\TShirt\TShirt\Infrastructure;
 
+use ArrayObject;
+use JacoBaldrich\TShirt\TShirt\Domain\TShirt;
+use JacoBaldrich\TShirt\TShirt\Domain\TShirtId;
 use JacoBaldrich\TShirt\TShirt\Domain\TShirtRepository;
 
 /**
@@ -25,7 +28,7 @@ final class InMemoryTShirtRepository extends ArrayObject implements TShirtReposi
 	 */
 	public function save( TShirt $tShirt ): void
 	{
-		$this->offsetSet( $tShirt->id() );
+		$this->offsetSet( $tShirt->id(), $tShirt );
 	}
 
 	/**

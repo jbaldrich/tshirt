@@ -10,6 +10,9 @@
 
 namespace JacoBaldrich\TShirt\TShirt\Domain;
 
+use JacoBaldrich\TShirt\TShirt\Domain\TShirt;
+use JacoBaldrich\TShirt\TShirt\Domain\TShirtId;
+
 /**
  * T-shirt Repository Interface.
  */

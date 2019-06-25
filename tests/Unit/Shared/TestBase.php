@@ -10,6 +10,8 @@
 
 namespace JacoBaldrich\TShirt\Tests\Unit\Shared;
 
+use PHPUnit\Framework\TestCase;
+
 /**
  * Abstract Test Base class.
  */
