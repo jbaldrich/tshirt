@@ -32,10 +32,10 @@ interface TShirtRepository
 	public function remove( TShirt $tShirt ): void;
 
 	/**
-	 * Find a T-Shirt.
+	 * Find a T-Shirt by ID.
 	 *
-	 * @param TShirt $tShirt
+	 * @param TShirtId $tShirtId
 	 * @return TShirt|null
 	 */
-	public function find( TShirt $tShirt ): ?TShirt;
+	public function find( TShirtId $tShirtId ): ?TShirt;
 }

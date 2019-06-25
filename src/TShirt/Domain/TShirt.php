@@ -65,4 +65,9 @@ final class TShirt
 			$unique[] = $variant->size();
 		}
 	}
+
+	public function id(): string
+	{
+		return $this->id->value();
+	}
 }
