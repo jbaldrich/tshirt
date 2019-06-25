@@ -74,7 +74,7 @@ abstract class PriceValueObject
 	 */
 	protected function validate( int $price )
 	{
-		if ( ! $price >= 0 ) {
+		if ( $price < 0 ) {
 			throw new \InvalidArgumentException(
 				sprintf(
 					'<%s> should be an integer bigger than 0, <%s> provided instead.',

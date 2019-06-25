@@ -47,7 +47,7 @@ final class TShirtVariant
 		TShirtVariantId $id,
 		TShirtVariantSize $size,
 		TShirtVariantPrice $price,
-		?TShirtVariantOfferPrice $offerPrice = null
+		?TShirtVariantPrice $offerPrice = null
 	)
 	{
 		$this->id         = $id;
@@ -63,5 +63,10 @@ final class TShirtVariant
 
 	public function discount(): int
 	{
+	}
+
+	public function size(): string
+	{
+		return $this->size->value();
 	}
 }

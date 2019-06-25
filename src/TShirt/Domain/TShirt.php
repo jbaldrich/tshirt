@@ -37,8 +37,9 @@ final class TShirt
 	 * @param TShirtName $name
 	 * @param TShirtVariant ...$variants
 	 */
-	public function __construct(TShirtId $id, TShirtName $name, TShirtVariant ...$variants)
+	public function __construct( TShirtId $id, TShirtName $name, TShirtVariant ...$variants )
 	{
+		$this->ensureNoDuplicatedSize( ...$variants );
 		$this->id       = $id;
 		$this->name     = $name;
 		$this->variants = $variants;
@@ -46,5 +47,22 @@ final class TShirt
 
 	public function cheapestVariant(): TShirtVariant
 	{
+		//array_reduce();
+	}
+
+	private function ensureNoDuplicatedSize( TShirtVariant ...$variants )
+	{
+		$unique = [];
+		foreach ( $variants as $variant ) {
+			if ( in_array( $variant->size(), $unique, true ) ) {
+				throw new \InvalidArgumentException(
+					sprintf(
+						'No duplicated sizes please, detected <%s> more than once.',
+						$variant->size()
+					)
+				);
+			}
+			$unique[] = $variant->size();
+		}
 	}
 }

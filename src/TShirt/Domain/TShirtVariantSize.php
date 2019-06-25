@@ -21,9 +21,9 @@ final class TShirtVariantSize extends StringValueObject
 	 * @var array
 	 */
 	private $validValues = [
-		S,
-		M,
-		L,
+		'S',
+		'M',
+		'L',
 	];
 
 	/**
@@ -41,7 +41,7 @@ final class TShirtVariantSize extends StringValueObject
 				sprintf(
 					'<%s> does not allow the value <%s>.',
 					static::class,
-					is_string( $value ) ? $value : gettype( $value )
+					is_scalar( $value ) ? $value : gettype( $value )
 				)
 			);
 		}
