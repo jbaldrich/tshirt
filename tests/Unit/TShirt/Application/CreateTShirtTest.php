@@ -10,14 +10,10 @@
 
 namespace JacoBaldrich\TShirt\Tests\Unit\TShirt\Application;
 
-use JacoBaldrich\TShirt\TShirt\Domain\TShirt;
 use JacoBaldrich\TShirt\TShirt\Domain\TShirtId;
-use JacoBaldrich\TShirt\TShirt\Domain\TShirtName;
 use JacoBaldrich\TShirt\Tests\Unit\Shared\TestBase;
-use JacoBaldrich\TShirt\TShirt\Domain\TShirtVariant;
-use JacoBaldrich\TShirt\TShirt\Domain\TShirtVariantId;
-use JacoBaldrich\TShirt\TShirt\Domain\TShirtVariantSize;
-use JacoBaldrich\TShirt\TShirt\Domain\TShirtVariantPrice;
+use JacoBaldrich\TShirt\TShirt\Shared\UuidValueObject;
+use JacoBaldrich\TShirt\TShirt\Application\TShirtCreator;
 use JacoBaldrich\TShirt\TShirt\Infrastructure\InMemoryTShirtRepository;
 
 /**
@@ -32,24 +28,31 @@ final class CreateTShirtTest extends TestBase
 		parent::setUp();
 		$this->repository = new InMemoryTShirtRepository;
 	}
-	
+
 	private function givenWeHaveATShirt()
 	{
-		// Variant 1
-		$variant1ID    = new TShirtVariantId;
-		$variant1Size  = new TShirtVariantSize('M');
-		$variant1Price = new TShirtVariantPrice(1495);
-		$variant1      = new TShirtVariant($variant1ID, $variant1Size, $variant1Price);
-		// Variant 2
-		$variant2ID         = new TShirtVariantId;
-		$variant2Size       = new TShirtVariantSize('S');
-		$variant2Price      = new TShirtVariantPrice(1695);
-		$variant2OfferPrice = new TShirtVariantPrice(1395);
-		$variant2           = new TShirtVariant($variant2ID, $variant2Size, $variant2Price, $variant2OfferPrice);
-		// Product
-		$productID   = new TShirtId;
-		$productName = new TShirtName('Camiseta corta');
-		return new TShirt($productID, $productName, $variant1, $variant2);
+		$creator = new TShirtCreator( $this->repository );
+		return $creator->create(
+			new UuidValueObject,
+			'Camiseta mojada',
+			[
+				'id' => new UuidValueObject,
+				'size' => 'M',
+				'price' => 1325,
+				'offer_price' => 1099
+			],
+			[
+				'id' => new UuidValueObject,
+				'size' => 'S',
+				'price' => 1225
+			],
+			[
+				'id' => new UuidValueObject,
+				'size' => 'L',
+				'price' => 2099,
+				'offer_price' => 1899
+			]
+		);
 	}
 
 	private function whenWeSaveATShirt( $tShirt )
@@ -62,7 +65,7 @@ final class CreateTShirtTest extends TestBase
 		// Given
 		$tShirt   = $this->givenWeHaveATShirt();
 		// When
-		$response = $this->whenWeSaveATShirt( $tShirt );
+		$this->whenWeSaveATShirt( $tShirt );
 		// Then
 		$this->assertSame( $tShirt, $this->repository->find( new TShirtId( $tShirt->id() ) ) );
 	}

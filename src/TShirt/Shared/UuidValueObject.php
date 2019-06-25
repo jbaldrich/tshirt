@@ -12,7 +12,7 @@ namespace JacoBaldrich\TShirt\TShirt\Shared;
 
 use Ramsey\Uuid\Uuid;
 
-abstract class UuidValueObject
+class UuidValueObject
 {
 
 	/**
