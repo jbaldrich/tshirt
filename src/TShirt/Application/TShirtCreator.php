@@ -47,15 +47,17 @@ final class TShirtCreator
 	 */
 	public function create( UuidValueObject $id, string $name, array ...$variants )
 	{
-		$variantCollection = [];
-		foreach ( $variants as $variant ) {
-			$variantCollection[] = TShirtVariantCreator::create(
-				$variant['id'],
-				$variant['size'],
-				$variant['price'],
-				isset( $variant['offer_price'] ) ? $variant['offer_price'] : null
-			);
-		}
+		$variantCollection = array_map(
+			function( $variant ) {
+				return TShirtVariantCreator::create(
+					$variant['id'],
+					$variant['size'],
+					$variant['price'],
+					isset( $variant['offer_price'] ) ? $variant['offer_price'] : null
+				);
+			},
+			$variants
+		);
 		// Product
 		$tShirtId = new TShirtId( $id->value() );
 		$tShirtName = new TShirtName( $name );
