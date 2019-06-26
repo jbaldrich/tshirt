@@ -26,6 +26,11 @@ abstract class TestBase extends TestCase
 		return Mockery::mock( $className );
 	}
 
+	protected function anInstanceOf( $className )
+	{
+		return Mockery::type( $className );
+	}
+
 	protected function tearDown(): void
 	{
 		Mockery::close();
