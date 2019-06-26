@@ -11,12 +11,12 @@
 namespace JacoBaldrich\TShirt\Tests\Unit\TShirts\Application;
 
 use JacoBaldrich\TShirt\Shared\UuidValueObject;
-use JacoBaldrich\TShirt\Variations\Domain\Variant;
+use JacoBaldrich\TShirt\Variants\Domain\Variant;
 use JacoBaldrich\TShirt\Tests\Unit\Shared\TestBase;
-use JacoBaldrich\TShirt\Variations\Domain\VariantRepository;
-use JacoBaldrich\TShirt\Variations\Application\VariantCreator;
-use JacoBaldrich\TShirt\Variations\Application\CreateVariantCommand;
-use JacoBaldrich\TShirt\Variations\Application\CreateVariantCommandHandler;
+use JacoBaldrich\TShirt\Variants\Domain\VariantRepository;
+use JacoBaldrich\TShirt\Variants\Application\VariantCreator;
+use JacoBaldrich\TShirt\Variants\Application\CreateVariantCommand;
+use JacoBaldrich\TShirt\Variants\Application\CreateVariantCommandHandler;
 
 /**
  * Tests for create a Variant use case.

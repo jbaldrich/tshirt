@@ -8,14 +8,14 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\Variations\Application;
+namespace JacoBaldrich\TShirt\Variants\Application;
 
 use JacoBaldrich\TShirt\Shared\TShirtId;
-use JacoBaldrich\TShirt\Variations\Domain\Variant;
-use JacoBaldrich\TShirt\Variations\Domain\VariantId;
-use JacoBaldrich\TShirt\Variations\Domain\VariantSize;
-use JacoBaldrich\TShirt\Variations\Domain\VariantPrice;
-use JacoBaldrich\TShirt\Variations\Domain\VariantRepository;
+use JacoBaldrich\TShirt\Variants\Domain\Variant;
+use JacoBaldrich\TShirt\Variants\Domain\VariantId;
+use JacoBaldrich\TShirt\Variants\Domain\VariantSize;
+use JacoBaldrich\TShirt\Variants\Domain\VariantPrice;
+use JacoBaldrich\TShirt\Variants\Domain\VariantRepository;
 
 /**
  * Variant Creator Use Case.

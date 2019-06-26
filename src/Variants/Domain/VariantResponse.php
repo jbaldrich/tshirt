@@ -8,15 +8,12 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\Variations\Application;
-
-use JacoBaldrich\TShirt\Shared\Command;
-use JacoBaldrich\TShirt\Shared\UuidValueObject;
+namespace JacoBaldrich\TShirt\Variants\Domain;
 
 /**
- * Variant Creator Command.
+ * Variant Response.
  */
-final class CreateVariantCommand extends Command
+final class VariantResponse implements Response
 {
 	private $tShirtId;
 	private $id;
@@ -27,24 +24,20 @@ final class CreateVariantCommand extends Command
 	/**
 	 * Constructor.
 	 *
-	 * @param UuidValueObject $commandId
 	 * @param string $tShirtId
 	 * @param string $id
 	 * @param string $size
-	 * @param int $price
-	 * @param int|null $offerPrice
+	 * @param integer $price
+	 * @param integer $offerPrice
 	 */
 	public function __construct(
-		UuidValueObject $commandId,
 		string $tShirtId,
 		string $id,
 		string $size,
 		int $price,
-		?int $offerPrice = null
+		int $offerPrice
 	)
 	{
-		parent::__construct( $commandId );
-
 		$this->tShirtId   = $tShirtId;
 		$this->id         = $id;
 		$this->size       = $size;
@@ -72,7 +65,7 @@ final class CreateVariantCommand extends Command
 		return $this->price;
 	}
 
-	public function offerPrice(): ?int
+	public function offerPrice(): int
 	{
 		return $this->offerPrice;
 	}

@@ -8,13 +8,11 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\Variations\Domain;
-
-use JacoBaldrich\TShirt\Shared\PriceValueObject;
+namespace JacoBaldrich\TShirt\Shared;
 
 /**
- * Variant Id Value Object.
+ * Query Interface.
  */
-final class VariantPrice extends PriceValueObject
+interface Query
 {
 }

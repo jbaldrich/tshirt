@@ -8,12 +8,12 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\Variations\Domain;
+namespace JacoBaldrich\TShirt\Variants\Domain;
 
 use JacoBaldrich\TShirt\Shared\TShirtId;
-use JacoBaldrich\TShirt\Variations\Domain\VariantId;
-use JacoBaldrich\TShirt\Variations\Domain\VariantSize;
-use JacoBaldrich\TShirt\Variations\Domain\VariantPrice;
+use JacoBaldrich\TShirt\Variants\Domain\VariantId;
+use JacoBaldrich\TShirt\Variants\Domain\VariantSize;
+use JacoBaldrich\TShirt\Variants\Domain\VariantPrice;
 
 /**
  * Entity Variant.

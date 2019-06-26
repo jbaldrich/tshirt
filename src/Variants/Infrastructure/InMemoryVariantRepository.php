@@ -8,12 +8,12 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\Variations\Domain;
+namespace JacoBaldrich\TShirt\Variants\Domain;
 
 use ArrayObject;
-use JacoBaldrich\TShirt\Variations\Domain\Variant;
-use JacoBaldrich\TShirt\Variations\Domain\VariantId;
-use JacoBaldrich\TShirt\Variations\Domain\VariantRepository;
+use JacoBaldrich\TShirt\Variants\Domain\Variant;
+use JacoBaldrich\TShirt\Variants\Domain\VariantId;
+use JacoBaldrich\TShirt\Variants\Domain\VariantRepository;
 
 /**
  * In memory Variant Repository.
@@ -51,5 +51,16 @@ final class InMemoryVariantRepository extends ArrayObject implements VariantRepo
 	public function find( VariantId $variantId ): ?Variant
 	{
 		return $this->offsetGet( $variantId->value() );
+	}
+
+	/**
+	 * Find all Variants by T-shirt ID.
+	 *
+	 * @param TShirtId $tShirtId
+	 * @return Variants|null
+	 */
+	public function findByTShirtId( TShirtId $tShirtId ): ?Variants
+	{
+		return $this->offsetGet( $tShirtId->value() );
 	}
 }

@@ -8,7 +8,7 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\Variations\Domain;
+namespace JacoBaldrich\TShirt\Variants\Domain;
 
 use JacoBaldrich\TShirt\Shared\StringValueObject;
 

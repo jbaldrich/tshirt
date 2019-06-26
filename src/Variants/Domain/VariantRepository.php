@@ -8,10 +8,10 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\Variations\Domain;
+namespace JacoBaldrich\TShirt\Variants\Domain;
 
-use JacoBaldrich\TShirt\Variations\Domain\Variant;
-use JacoBaldrich\TShirt\Variations\Domain\VariantId;
+use JacoBaldrich\TShirt\Variants\Domain\Variant;
+use JacoBaldrich\TShirt\Variants\Domain\VariantId;
 
 /**
  * Variant Repository Interface.
@@ -41,4 +41,12 @@ interface VariantRepository
 	 * @return Variant|null
 	 */
 	public function find( VariantId $variantId ): ?Variant;
+
+	/**
+	 * Find all Variants by T-shirt ID.
+	 *
+	 * @param TShirtId $tShirtId
+	 * @return Variants|null
+	 */
+	public function findByTShirtId( TShirtId $tShirtId ): ?Variants;
 }
