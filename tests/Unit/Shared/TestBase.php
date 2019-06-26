@@ -10,6 +10,8 @@
 
 namespace JacoBaldrich\TShirt\Tests\Unit\Shared;
 
+use Mockery;
+use Mockery\MockInterface;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,4 +19,16 @@ use PHPUnit\Framework\TestCase;
  */
 abstract class TestBase extends TestCase
 {
+	use \Mockery\Adapter\Phpunit\MockeryPHPUnitIntegration;
+
+	protected function mock( $className ): MockInterface
+	{
+		return Mockery::mock( $className );
+	}
+
+	protected function tearDown(): void
+	{
+		Mockery::close();
+		parent::tearDown();
+	}
 }

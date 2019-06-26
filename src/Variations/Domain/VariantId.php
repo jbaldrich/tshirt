@@ -8,13 +8,13 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\TShirt\Domain;
+namespace JacoBaldrich\TShirt\Variations\Domain;
 
-use JacoBaldrich\TShirt\TShirt\Shared\UuidValueObject;
+use JacoBaldrich\TShirt\Shared\UuidValueObject;
 
 /**
- * T-shirt Id Value Object.
+ * Variant Id Value Object.
  */
-final class TShirtId extends UuidValueObject
+final class VariantId extends UuidValueObject
 {
 }

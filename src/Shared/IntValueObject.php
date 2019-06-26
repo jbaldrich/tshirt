@@ -8,21 +8,21 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\TShirt\Shared;
+namespace JacoBaldrich\TShirt\Shared;
 
-abstract class StringValueObject
+abstract class IntValueObject
 {
 	/**
-	 * @var string
+	 * @var int
 	 */
 	protected $value;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param string $value
+	 * @param int $value
 	 */
-	public function __construct( string $value )
+	public function __construct( int $value )
 	{
 		$this->validate( $value );
 		$this->value = $value;
@@ -31,9 +31,9 @@ abstract class StringValueObject
 	/**
 	 * Get the value.
 	 *
-	 * @return string
+	 * @return int
 	 */
-	public function value(): string
+	public function value(): int
 	{
 		return $this->value;
 	}
@@ -42,9 +42,9 @@ abstract class StringValueObject
 	 * Guard clause to check if the value follows the
 	 * required parameters.
 	 *
-	 * @param string $value
+	 * @param int $value
 	 * @throws \InvalidArgumentException
 	 * @return void
 	 */
-	abstract protected function validate( string $value );
+	abstract protected function validate( int $value );
 }

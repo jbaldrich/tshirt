@@ -8,12 +8,12 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\TShirt\Infrastructure;
+namespace JacoBaldrich\TShirt\TShirts\Infrastructure;
 
 use ArrayObject;
-use JacoBaldrich\TShirt\TShirt\Domain\TShirt;
-use JacoBaldrich\TShirt\TShirt\Domain\TShirtId;
-use JacoBaldrich\TShirt\TShirt\Domain\TShirtRepository;
+use JacoBaldrich\TShirt\Shared\TShirtId;
+use JacoBaldrich\TShirt\TShirts\Domain\TShirt;
+use JacoBaldrich\TShirt\TShirts\Domain\TShirtRepository;
 
 /**
  * In memory T-Shirt Repository.
@@ -28,7 +28,7 @@ final class InMemoryTShirtRepository extends ArrayObject implements TShirtReposi
 	 */
 	public function save( TShirt $tShirt ): void
 	{
-		$this->offsetSet( $tShirt->id(), $tShirt );
+		$this->offsetSet( $tShirt->id()->value(), $tShirt );
 	}
 
 	/**
@@ -39,7 +39,7 @@ final class InMemoryTShirtRepository extends ArrayObject implements TShirtReposi
 	 */
 	public function remove( TShirt $tShirt ): void
 	{
-		$this->offsetUnset( $tShirt->id() );
+		$this->offsetUnset( $tShirt->id()->value() );
 	}
 
 	/**

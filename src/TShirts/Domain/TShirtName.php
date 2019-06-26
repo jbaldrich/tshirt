@@ -8,9 +8,9 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\TShirt\Domain;
+namespace JacoBaldrich\TShirt\TShirts\Domain;
 
-use JacoBaldrich\TShirt\TShirt\Shared\StringValueObject;
+use JacoBaldrich\TShirt\Shared\StringValueObject;
 
 /**
  * T-shirt Id Value Object.

@@ -8,14 +8,14 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\TShirt\Domain;
+namespace JacoBaldrich\TShirt\Variations\Domain;
 
-use JacoBaldrich\TShirt\TShirt\Shared\StringValueObject;
+use JacoBaldrich\TShirt\Shared\StringValueObject;
 
 /**
- * T-shirt Variant Id Value Object.
+ * Variant Id Value Object.
  */
-final class TShirtVariantSize extends StringValueObject
+final class VariantSize extends StringValueObject
 {
 	/**
 	 * @var array

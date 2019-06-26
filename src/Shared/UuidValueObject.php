@@ -8,7 +8,7 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\TShirt\Shared;
+namespace JacoBaldrich\TShirt\Shared;
 
 use Ramsey\Uuid\Uuid;
 

@@ -8,10 +8,10 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\TShirt\Domain;
+namespace JacoBaldrich\TShirt\TShirts\Domain;
 
-use JacoBaldrich\TShirt\TShirt\Domain\TShirt;
-use JacoBaldrich\TShirt\TShirt\Domain\TShirtId;
+use JacoBaldrich\TShirt\Shared\TShirtId;
+use JacoBaldrich\TShirt\TShirts\Domain\TShirt;
 
 /**
  * T-shirt Repository Interface.
