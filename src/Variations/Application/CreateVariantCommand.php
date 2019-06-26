@@ -31,16 +31,16 @@ final class CreateVariantCommand extends Command
 	 * @param string $tShirtId
 	 * @param string $id
 	 * @param string $size
-	 * @param string $price
-	 * @param string|null $offerPrice
+	 * @param int $price
+	 * @param int|null $offerPrice
 	 */
 	public function __construct(
 		UuidValueObject $commandId,
 		string $tShirtId,
 		string $id,
 		string $size,
-		string $price,
-		?string $offerPrice = null
+		int $price,
+		?int $offerPrice = null
 	)
 	{
 		parent::__construct( $commandId );
@@ -67,12 +67,12 @@ final class CreateVariantCommand extends Command
 		return $this->size;
 	}
 
-	public function price(): string
+	public function price(): int
 	{
 		return $this->price;
 	}
 
-	public function offerPrice(): ?string
+	public function offerPrice(): ?int
 	{
 		return $this->offerPrice;
 	}
