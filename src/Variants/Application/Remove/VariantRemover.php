@@ -8,56 +8,54 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\TShirts\Application;
+namespace JacoBaldrich\TShirt\Variants\Application;
 
-use JacoBaldrich\TShirt\Shared\TShirtId;
-use JacoBaldrich\TShirt\TShirts\Domain\TShirt;
-use JacoBaldrich\TShirt\TShirts\Domain\TShirtName;
-use JacoBaldrich\TShirt\TShirts\Domain\TShirtRepository;
+use JacoBaldrich\TShirt\Shared\VariantId;
+use JacoBaldrich\TShirt\Variants\Domain\VariantRepository;
+use JacoBaldrich\TShirt\Variants\Application\VariantFinder;
 
 /**
- * T-Shirt Remover Use Case.
+ * Variant Remover Use Case.
  */
 final class VariantRemover
 {
 	/**
-	 * @var TShirtRepository
+	 * @var VariantRepository
 	 */
 	private $repository;
 
 	/**
-	 * @var TShirtFinder
+	 * @var VariantFinder
 	 */
 	private $finder;
 
 	/**
 	 * Constructor.
 	 *
-	 * @param TShirtRepository $repository
+	 * @param VariantRepository $repository
 	 */
-	public function __construct( TShirtRepository $repository )
+	public function __construct( VariantRepository $repository )
 	{
 		$this->repository = $repository;
-		$this->finder = new TShirtFinder( $this->repository );
+		$this->finder = new VariantFinder( $this->repository );
 	}
 
 	/**
-	 * Remove a new T-shirt
+	 * Remove a variant.
 	 *
-	 * @param TShirtId $id
-	 * @param TShirtName $name
+	 * @param VariantId $id
 	 * @return void
 	 */
-	public function remove( TShirtId $id )
+	public function remove( VariantId $id )
 	{
-		$tShirt = $this->finder->find( $id );
-		$this->ensureTShirtIsNotNull( $tShirt );
-		$this->repository->remove( $tShirt );
+		$variant = $this->finder->find( $id );
+		$this->ensureVariantIsNotNull( $variant );
+		$this->repository->remove( $variant );
 	}
 
-	private function ensureTShirtIsNotNull( $tShirt )
+	private function ensureVariantIsNotNull( $variant )
 	{
-		if ( is_null( $tShirt ) ) {
+		if ( is_null( $variant ) ) {
 			throw new \Exception(
 				'The T-Shirt Id does not exist'
 			);

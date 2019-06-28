@@ -17,15 +17,18 @@ use JacoBaldrich\TShirt\Shared\UuidValueObject;
 use JacoBaldrich\TShirt\Variants\Domain\Variant;
 use JacoBaldrich\TShirt\Tests\Unit\Shared\TestBase;
 use JacoBaldrich\TShirt\Variants\Domain\VariantSize;
-use JacoBaldrich\TShirt\TShirts\Application\PriceChanger;
+use JacoBaldrich\TShirt\Variants\Application\PriceChanger;
+use JacoBaldrich\TShirt\Variants\Application\VariantRemover;
 use JacoBaldrich\TShirt\Variants\Application\VariantCreator;
-use JacoBaldrich\TShirt\TShirts\Application\ChangePriceCommand;
+use JacoBaldrich\TShirt\Variants\Application\ChangePriceCommand;
+use JacoBaldrich\TShirt\Variants\Application\RemoveVariantCommand;
 use JacoBaldrich\TShirt\Variants\Application\CreateVariantCommand;
 use JacoBaldrich\TShirt\Variants\Domain\InMemoryVariantRepository;
-use JacoBaldrich\TShirt\TShirts\Application\ChangeOfferPriceCommand;
-use JacoBaldrich\TShirt\TShirts\Application\ChangePriceCommandHandler;
+use JacoBaldrich\TShirt\Variants\Application\ChangeOfferPriceCommand;
+use JacoBaldrich\TShirt\Variants\Application\ChangePriceCommandHandler;
+use JacoBaldrich\TShirt\Variants\Application\RemoveVariantCommandHandler;
 use JacoBaldrich\TShirt\Variants\Application\CreateVariantCommandHandler;
-use JacoBaldrich\TShirt\TShirts\Application\ChangeOfferPriceCommandHandler;
+use JacoBaldrich\TShirt\Variants\Application\ChangeOfferPriceCommandHandler;
 
 /**
  * Tests for variant use cases.
@@ -140,9 +143,9 @@ final class VariantTest extends TestBase
 	public function test_remove_a_variant( $repository )
 	{
 		// Given:
-		$remover = new TShirtRemover( $repository );
-		$handler = new RemoveTShirtCommandHandler( $remover );
-		$command = new RemoveTShirtCommand(
+		$remover = new VariantRemover( $repository );
+		$handler = new RemoveVariantCommandHandler( $remover );
+		$command = new RemoveVariantCommand(
 			new UuidValueObject,
 			$this->id
 		);

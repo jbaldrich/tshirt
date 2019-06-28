@@ -8,12 +8,12 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\TShirts\Application;
+namespace JacoBaldrich\TShirt\Variants\Application;
 
 use JacoBaldrich\TShirt\Shared\VariantId;
 use JacoBaldrich\TShirt\Shared\VariantPrice;
-use JacoBaldrich\TShirt\TShirts\Application\PriceChanger;
-use JacoBaldrich\TShirt\TShirts\Application\ChangePriceCommand;
+use JacoBaldrich\TShirt\Variants\Application\PriceChanger;
+use JacoBaldrich\TShirt\Variants\Application\ChangeOfferPriceCommand;
 
 /**
  * Change Variant Offer Price Command Handler.

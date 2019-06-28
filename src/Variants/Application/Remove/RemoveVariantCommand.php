@@ -8,7 +8,7 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\TShirts\Application;
+namespace JacoBaldrich\TShirt\Variants\Application;
 
 use JacoBaldrich\TShirt\Shared\Command;
 use JacoBaldrich\TShirt\Shared\UuidValueObject;

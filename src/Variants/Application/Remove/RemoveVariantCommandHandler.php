@@ -8,29 +8,28 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\TShirts\Application;
+namespace JacoBaldrich\TShirt\Variants\Application;
 
-use JacoBaldrich\TShirt\Shared\TShirtId;
-use JacoBaldrich\TShirt\TShirts\Domain\TShirtName;
-use JacoBaldrich\TShirt\TShirts\Application\TShirtRemover;
-use JacoBaldrich\TShirt\TShirts\Application\RemoveTShirtCommand;
+use JacoBaldrich\TShirt\Shared\VariantId;
+use JacoBaldrich\TShirt\Variants\Application\VariantRemover;
+use JacoBaldrich\TShirt\Variants\Application\RemoveVariantCommand;
 
 /**
- * T-Shirt Remover Command Handler.
+ * Variant Remover Command Handler.
  */
 final class RemoveVariantCommandHandler
 {
-	private $tShirtRemover;
+	private $remover;
 
-	public function __construct( TShirtRemover $tShirtRemover )
+	public function __construct( VariantRemover $remover )
 	{
-		$this->tShirtRemover = $tShirtRemover;
+		$this->remover = $remover;
 	}
 
-	public function handle( RemoveTShirtCommand $command ): void
+	public function handle( RemoveVariantCommand $command ): void
 	{
-		$id = new TShirtId( $command->id() );
+		$id = new VariantId( $command->id() );
 
-		$this->tShirtRemover->remove( $id );
+		$this->remover->remove( $id );
 	}
 }
