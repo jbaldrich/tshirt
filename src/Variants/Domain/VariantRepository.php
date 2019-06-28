@@ -10,7 +10,9 @@
 
 namespace JacoBaldrich\TShirt\Variants\Domain;
 
+use JacoBaldrich\TShirt\Shared\TShirtId;
 use JacoBaldrich\TShirt\Variants\Domain\Variant;
+use JacoBaldrich\TShirt\Variants\Domain\Variants;
 use JacoBaldrich\TShirt\Variants\Domain\VariantId;
 
 /**

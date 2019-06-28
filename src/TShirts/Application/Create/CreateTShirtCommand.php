@@ -32,8 +32,8 @@ final class CreateTShirtCommand extends Command
 	{
 		parent::__construct( $commandId );
 
-		$this->id        = $id;
-		$this->name      = $name;
+		$this->id   = $id;
+		$this->name = $name;
 	}
 
 	public function id(): string

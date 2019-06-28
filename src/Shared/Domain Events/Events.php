@@ -8,13 +8,11 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\Variants\Domain;
-
-use JacoBaldrich\TShirt\Shared\PriceValueObject;
+namespace JacoBaldrich\TShirt\Shared;
 
 /**
- * Variant Id Value Object.
+ * Events Interface.
  */
-final class VariantPrice extends PriceValueObject
+interface Events extends \ArrayAccess
 {
 }

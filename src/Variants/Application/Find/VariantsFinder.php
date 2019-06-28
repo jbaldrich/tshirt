@@ -12,6 +12,7 @@ namespace JacoBaldrich\TShirt\Variants\Application;
 
 use JacoBaldrich\TShirt\Shared\TShirtId;
 use JacoBaldrich\TShirt\Variants\Domain\Variant;
+use JacoBaldrich\TShirt\Variants\Domain\Variants;
 use JacoBaldrich\TShirt\Variants\Domain\VariantId;
 use JacoBaldrich\TShirt\Variants\Domain\VariantSize;
 use JacoBaldrich\TShirt\Variants\Domain\VariantPrice;
@@ -41,10 +42,9 @@ final class VariantsFinder
 	 * Find all T-shirt Variants by T-shirt ID.
 	 *
 	 * @param TShirtId $tShirtId
-	 * @return void
 	 */
-	public function find( TShirtId $tShirtId )
+	public function find( TShirtId $tShirtId ): ?Variants
 	{
-		return $this->repository->save( $variant );
+		return $this->repository->findByTShirtId( $tShirtId );
 	}
 }

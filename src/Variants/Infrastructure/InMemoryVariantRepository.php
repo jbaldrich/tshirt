@@ -11,7 +11,9 @@
 namespace JacoBaldrich\TShirt\Variants\Domain;
 
 use ArrayObject;
+use JacoBaldrich\TShirt\Shared\TShirtId;
 use JacoBaldrich\TShirt\Variants\Domain\Variant;
+use JacoBaldrich\TShirt\Variants\Domain\Variants;
 use JacoBaldrich\TShirt\Variants\Domain\VariantId;
 use JacoBaldrich\TShirt\Variants\Domain\VariantRepository;
 
@@ -61,6 +63,15 @@ final class InMemoryVariantRepository extends ArrayObject implements VariantRepo
 	 */
 	public function findByTShirtId( TShirtId $tShirtId ): ?Variants
 	{
-		return $this->offsetGet( $tShirtId->value() );
+		return new Variants(
+			...array_values(
+				array_filter(
+					(array) $this,
+					function( $variant ) use ( $tShirtId ) {
+						return $variant->tShirtId()->value() === $tShirtId->value();
+					}
+				)
+			)
+		);
 	}
 }

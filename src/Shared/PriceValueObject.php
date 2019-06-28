@@ -33,9 +33,9 @@ abstract class PriceValueObject
 	/**
 	 * Get the value.
 	 *
-	 * @return int
+	 * @return string
 	 */
-	public function value(): int
+	public function value(): string
 	{
 		return $this->price->getAmount();
 	}

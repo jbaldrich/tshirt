@@ -8,13 +8,11 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\Variants\Domain;
-
-use JacoBaldrich\TShirt\Shared\UuidValueObject;
+namespace JacoBaldrich\TShirt\Shared;
 
 /**
- * Variant Id Value Object.
+ * Event Interface.
  */
-final class VariantId extends UuidValueObject
+interface Event
 {
 }

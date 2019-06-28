@@ -8,21 +8,30 @@
  * @license   MIT
  */
 
-namespace JacoBaldrich\TShirt\TShirts\Domain;
+namespace JacoBaldrich\TShirt\Variants\Domain;
 
 /**
  * Variants Response Converter.
  */
 final class VariantsResponseConverter
 {
-	public static function convert( Variants $variants ): VariantsResponse
+	public static function convert( ?Variants $variants ): ?array
 	{
-		return array_map( function( $variant ) {
-			return new VariantResponse(
-				$variant->id()->value()
-			);
+		if ( is_null( $variants ) ) {
+			return null;
+		}
+		dump($variants);
+		return array_map(
+			function( $variant ) {
+				return new VariantResponse(
+					$variant->tShirtId()->value(),
+					$variant->id()->value(),
+					$variant->size()->value(),
+					$variant->finalPrice()->value(),
+					$variant->discount()
+				);
 			},
-			$variants
+			$variants->variants()
 		);
 	}
 }

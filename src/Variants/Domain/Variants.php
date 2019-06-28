@@ -13,6 +13,17 @@ namespace JacoBaldrich\TShirt\Variants\Domain;
 /**
  * Variants Interface.
  */
-interface Variants extends \ArrayAccess
+final class Variants
 {
+	private $variants = [];
+
+	public function __construct( Variant ...$variant )
+	{
+		$this->variants = $variant;
+	}
+
+	public function variants()
+	{
+		return $this->variants;
+	}
 }

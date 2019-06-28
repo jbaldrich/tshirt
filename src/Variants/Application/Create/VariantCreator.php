@@ -11,10 +11,10 @@
 namespace JacoBaldrich\TShirt\Variants\Application;
 
 use JacoBaldrich\TShirt\Shared\TShirtId;
+use JacoBaldrich\TShirt\Shared\VariantId;
+use JacoBaldrich\TShirt\Shared\VariantPrice;
 use JacoBaldrich\TShirt\Variants\Domain\Variant;
-use JacoBaldrich\TShirt\Variants\Domain\VariantId;
 use JacoBaldrich\TShirt\Variants\Domain\VariantSize;
-use JacoBaldrich\TShirt\Variants\Domain\VariantPrice;
 use JacoBaldrich\TShirt\Variants\Domain\VariantRepository;
 
 /**

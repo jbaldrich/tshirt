@@ -11,11 +11,9 @@
 namespace JacoBaldrich\TShirt\Variants\Application;
 
 use JacoBaldrich\TShirt\Shared\TShirtId;
-use JacoBaldrich\TShirt\Variants\Domain\VariantId;
-use JacoBaldrich\TShirt\Variants\Domain\VariantSize;
-use JacoBaldrich\TShirt\Variants\Domain\VariantPrice;
-use JacoBaldrich\TShirt\Variants\Application\VariantFinder;
-use JacoBaldrich\TShirt\Variants\Application\CreateVariantCommand;
+use JacoBaldrich\TShirt\Variants\Application\VariantsFinder;
+use JacoBaldrich\TShirt\Variants\Application\FindVariantsQuery;
+use JacoBaldrich\TShirt\Variants\Domain\VariantsResponseConverter;
 
 /**
  * Variants Find Query Handler.
@@ -29,10 +27,12 @@ final class FindVariantsQueryHandler
 		$this->finder = $finder;
 	}
 
-	public function handle( FindVariantsQuery $query )
+	public function handle( FindVariantsQuery $query ): ?array
 	{
 		$tShirtId = new TShirtId( $query->tShirtId() );
 
-		return $this->finder->find( $tShirtId );
+		$variants = $this->finder->find( $tShirtId );
+
+		return VariantsResponseConverter::convert( $variants );
 	}
 }
