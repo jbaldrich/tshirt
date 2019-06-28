@@ -27,7 +27,7 @@ use JacoBaldrich\TShirt\TShirts\Application\RenameTShirtCommandHandler;
 use JacoBaldrich\TShirt\TShirts\Infrastructure\InMemoryTShirtRepository;
 
 /**
- * Tests for create a T-shirt use case.
+ * Tests for T-shirt use cases.
  */
 final class TShirtTest extends TestBase
 {

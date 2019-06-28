@@ -99,4 +99,14 @@ final class Variant extends AggregateRoot
 	{
 		return $this->tShirtId;
 	}
+
+	public function changePrice( VariantPrice $price ): void
+	{
+		$this->price = $price;
+	}
+
+	public function changeOfferPrice( VariantPrice $price ): void
+	{
+		$this->offerPrice = $price;
+	}
 }

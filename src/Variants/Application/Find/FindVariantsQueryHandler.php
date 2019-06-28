@@ -11,7 +11,7 @@
 namespace JacoBaldrich\TShirt\Variants\Application;
 
 use JacoBaldrich\TShirt\Shared\TShirtId;
-use JacoBaldrich\TShirt\Variants\Application\VariantsFinder;
+use JacoBaldrich\TShirt\Variants\Application\VariantFinder;
 use JacoBaldrich\TShirt\Variants\Application\FindVariantsQuery;
 use JacoBaldrich\TShirt\Variants\Domain\VariantsResponseConverter;
 
@@ -22,7 +22,7 @@ final class FindVariantsQueryHandler
 {
 	private $finder;
 
-	public function __construct( VariantsFinder $finder )
+	public function __construct( VariantFinder $finder )
 	{
 		$this->finder = $finder;
 	}
