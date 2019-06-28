@@ -98,4 +98,9 @@ final class TShirt extends AggregateRoot
 	{
 		return $this->averageDiscount;
 	}
+
+	public function rename( TShirtName $name ): void
+	{
+		$this->name = $name;
+	}
 }

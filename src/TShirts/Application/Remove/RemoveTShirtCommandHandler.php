@@ -29,9 +29,8 @@ final class RemoveTShirtCommandHandler
 
 	public function handle( RemoveTShirtCommand $command ): void
 	{
-		$id   = new TShirtId( $command->id() );
-		$name = new TShirtName( $command->name() );
+		$id = new TShirtId( $command->id() );
 
-		$this->tShirtRemover->remove( $id, $name );
+		$this->tShirtRemover->remove( $id );
 	}
 }

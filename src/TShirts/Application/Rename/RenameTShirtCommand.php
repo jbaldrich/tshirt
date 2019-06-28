@@ -14,11 +14,12 @@ use JacoBaldrich\TShirt\Shared\Command;
 use JacoBaldrich\TShirt\Shared\UuidValueObject;
 
 /**
- * T-Shirt Remover Command.
+ * T-Shirt Rename Command.
  */
-final class RemoveTShirtCommand extends Command
+final class RenameTShirtCommand extends Command
 {
 	private $id;
+	private $name;
 
 	/**
 	 * Constructor.
@@ -27,15 +28,21 @@ final class RemoveTShirtCommand extends Command
 	 * @param string $id
 	 * @param string $name
 	 */
-	public function __construct( UuidValueObject $commandId, string $id )
+	public function __construct( UuidValueObject $commandId, string $id, string $name )
 	{
 		parent::__construct( $commandId );
 
-		$this->id = $id;
+		$this->id   = $id;
+		$this->name = $name;
 	}
 
 	public function id(): string
 	{
 		return $this->id;
+	}
+
+	public function name(): string
+	{
+		return $this->name;
 	}
 }
