@@ -20,7 +20,7 @@ use JacoBaldrich\TShirt\TShirts\Application\FindTShirtQueryHandler;
 /**
  * Tests query a t-shirt by id use case.
  */
-final class QueryTShirtTest extends TestBase
+final class FindTShirtTest extends TestBase
 {
 	private $repository;
 	private $finder;

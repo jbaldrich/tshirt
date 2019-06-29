@@ -12,7 +12,6 @@ namespace JacoBaldrich\TShirt\Tests\Unit\TShirts\Application;
 
 use JacoBaldrich\TShirt\Shared\TShirtId;
 use JacoBaldrich\TShirt\Tests\Unit\Shared\TestBase;
-use JacoBaldrich\TShirt\Variants\Domain\VariantResponse;
 use JacoBaldrich\TShirt\Variants\Domain\VariantRepository;
 use JacoBaldrich\TShirt\Variants\Application\VariantFinder;
 use JacoBaldrich\TShirt\Variants\Application\FindVariantsQuery;
@@ -21,7 +20,7 @@ use JacoBaldrich\TShirt\Variants\Application\FindVariantsQueryHandler;
 /**
  * Tests query all variants by t-shirt id use case.
  */
-final class QueryVariantTest extends TestBase
+final class FindVariantsTest extends TestBase
 {
 	private $repository;
 	private $finder;
