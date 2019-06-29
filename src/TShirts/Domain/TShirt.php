@@ -38,11 +38,6 @@ final class TShirt extends AggregateRoot
 	private $name;
 
 	/**
-	 * @var array
-	 */
-	private $variants;
-
-	/**
 	 * @var VariantId
 	 */
 	private $cheapestVariantId;
@@ -65,13 +60,11 @@ final class TShirt extends AggregateRoot
 	 */
 	public function __construct(
 		TShirtId $id,
-		TShirtName $name,
-		array $variants = null
+		TShirtName $name
 	)
 	{
 		$this->id = $id;
 		$this->name = $name;
-		$this->variants = $variants ?? [];
 
 		$this->record(
 			new TShirtCreated(

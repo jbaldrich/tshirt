@@ -130,5 +130,14 @@ final class Variant extends AggregateRoot
 	public function changeOfferPrice( VariantPrice $price ): void
 	{
 		$this->offerPrice = $price;
+
+		$this->record(
+			new VariantPriceChanged(
+				$this->tShirtId->value(),
+				$this->id->value(),
+				$this->finalPrice()->value(),
+				$this->discount()
+			)
+		);
 	}
 }
