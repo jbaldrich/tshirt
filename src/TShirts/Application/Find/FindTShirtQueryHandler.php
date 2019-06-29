@@ -34,6 +34,8 @@ final class FindTShirtQueryHandler
 
 		$tShirt = $this->finder->find( $tShirtId );
 
-		return TShirtResponseConverter::convert( $tShirt );
+		return is_null( $tShirt )
+			? null
+			: TShirtResponseConverter::convert( $tShirt );
 	}
 }
