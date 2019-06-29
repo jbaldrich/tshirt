@@ -11,7 +11,7 @@
 namespace JacoBaldrich\TShirt\Variants\Domain;
 
 /**
- * Variants Interface.
+ * Variants Collection.
  */
 final class Variants
 {
@@ -22,7 +22,7 @@ final class Variants
 		$this->variants = $variant;
 	}
 
-	public function variants()
+	public function getCollection()
 	{
 		return $this->variants;
 	}

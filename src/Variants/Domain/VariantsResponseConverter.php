@@ -20,7 +20,7 @@ final class VariantsResponseConverter
 		if ( is_null( $variants ) ) {
 			return null;
 		}
-		dump($variants);
+
 		return array_map(
 			function( $variant ) {
 				return new VariantResponse(
@@ -31,7 +31,7 @@ final class VariantsResponseConverter
 					$variant->discount()
 				);
 			},
-			$variants->variants()
+			$variants->getCollection()
 		);
 	}
 }

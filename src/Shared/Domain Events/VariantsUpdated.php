@@ -11,17 +11,17 @@
 namespace JacoBaldrich\TShirt\Shared;
 
 /**
- * T-shirt created domain event.
+ * T-shirt renamed domain event.
  */
-class TShirtCreated implements Event
+class VariantsUpdated implements Event
 {
 	private $id;
-	private $name;
+	private $data;
 
-	public function __construct( string $id, string $name )
+	public function __construct( string $id, array $data )
 	{
 		$this->id = $id;
-		$this->name = $name;
+		$this->data = $data;
 	}
 
 	public function id(): string
@@ -29,8 +29,8 @@ class TShirtCreated implements Event
 		return $this->id;
 	}
 
-	public function name(): string
+	public function data(): array
 	{
-		return $this->name;
+		return $this->data;
 	}
 }

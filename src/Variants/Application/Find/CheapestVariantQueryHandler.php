@@ -18,7 +18,7 @@ use JacoBaldrich\TShirt\Variants\Domain\VariantsResponseConverter;
 /**
  * Variants Find Query Handler.
  */
-final class FindVariantsQueryHandler
+final class CheapestVariantQueryHandler
 {
 	private $finder;
 
@@ -27,11 +27,11 @@ final class FindVariantsQueryHandler
 		$this->finder = $finder;
 	}
 
-	public function handle( FindVariantsQuery $query ): ?array
+	public function handle( CheapestVariantQuery $query ): ?array
 	{
 		$tShirtId = new TShirtId( $query->tShirtId() );
 
-		$variants = $this->finder->findAll( $tShirtId );
+		$variants = $this->finder->find( $tShirtId );
 
 		return VariantsResponseConverter::convert( $variants );
 	}

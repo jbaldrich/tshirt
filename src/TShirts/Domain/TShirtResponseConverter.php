@@ -10,7 +10,7 @@
 
 namespace JacoBaldrich\TShirt\TShirts\Domain;
 
-use JacoBaldrich\TShirt\TShirt\Domain\TShirt;
+use JacoBaldrich\TShirt\TShirts\Domain\TShirt;
 use JacoBaldrich\TShirt\TShirts\Domain\TShirtResponse;
 
 /**
@@ -22,7 +22,10 @@ final class TShirtResponseConverter
 	{
 		return new TShirtResponse(
 			$tShirt->id()->value(),
-			$tShirt->name()->value()
+			$tShirt->name()->value(),
+			$tShirt->cheapestVariantId()->value(),
+			$tShirt->averagePrice()->value(),
+			$tShirt->averageDiscount()->value()
 		);
 	}
 }

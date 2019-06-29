@@ -11,10 +11,16 @@
 namespace JacoBaldrich\TShirt\TShirts\Domain;
 
 use JacoBaldrich\TShirt\Shared\TShirtId;
-use JacoBaldrich\TShirt\TShirts\Domain\TShirtName;
-use JacoBaldrich\TShirt\Variants\Domain\VariantPrice;
-use JacoBaldrich\TShirt\Shared\TShirtCreated;
+use JacoBaldrich\TShirt\Shared\VariantId;
+use JacoBaldrich\TShirt\Shared\VariantPrice;
 use JacoBaldrich\TShirt\Shared\AggregateRoot;
+use JacoBaldrich\TShirt\Shared\TShirtCreated;
+use JacoBaldrich\TShirt\Shared\TShirtRenamed;
+use JacoBaldrich\TShirt\Shared\VariantsUpdated;
+use JacoBaldrich\TShirt\Variants\Domain\Variants;
+use JacoBaldrich\TShirt\TShirts\Domain\TShirtName;
+use JacoBaldrich\TShirt\Shared\CheapestVariantChanged;
+use JacoBaldrich\TShirt\Variants\Domain\VariantResponse;
 
 /**
  * Entity T-Shirt.
@@ -30,6 +36,11 @@ final class TShirt extends AggregateRoot
 	 * @var TShirtName
 	 */
 	private $name;
+
+	/**
+	 * @var array
+	 */
+	private $variants;
 
 	/**
 	 * @var VariantId
@@ -55,16 +66,12 @@ final class TShirt extends AggregateRoot
 	public function __construct(
 		TShirtId $id,
 		TShirtName $name,
-		VariantId $cheapestVariantId = null,
-		VariantPrice $averagePrice = null,
-		Discount $averageDiscount = null
+		array $variants = null
 	)
 	{
 		$this->id = $id;
 		$this->name = $name;
-		$this->cheapestVariantId = $cheapestVariantId;
-		$this->averagePrice = $averagePrice;
-		$this->averageDiscount = $averageDiscount;
+		$this->variants = $variants ?? [];
 
 		$this->record(
 			new TShirtCreated(
@@ -102,5 +109,67 @@ final class TShirt extends AggregateRoot
 	public function rename( TShirtName $name ): void
 	{
 		$this->name = $name;
+		$this->record(
+			new TShirtRenamed(
+				$this->id->value(),
+				$this->name->value()
+			)
+		);
+	}
+
+	public function updateVariants( VariantResponse ...$variants ): void
+	{
+		foreach ( $variants as $variant ) {
+			$variantsArray[ $variant->id() ] = [
+				'id' => $variant->id(),
+				'size' => $variant->size(),
+				'final-price' => $variant->finalPrice(),
+				'discount' => $variant->discount()
+			];
+		}
+		$prices = array_column( $variantsArray, 'final-price', 'id' );
+		$discounts = array_column( $variantsArray, 'discount', 'id' );
+
+		$this->calculateCheapestVariant( $prices );
+		$this->calculateAveragePrice( $prices );
+		$this->calculateAverageDiscount( $discounts );
+
+		$this->record(
+			new VariantsUpdated(
+				$this->id->value(),
+				[
+					'product-name' => $this->name->value(),
+					'cheapest-variant-id' => $this->cheapestVariantId()->value(),
+					'average-price' => $this->averagePrice->value(),
+					'average-discount' => $this->averageDiscount->value()
+				]
+			)
+		);
+	}
+
+	private function calculateCheapestVariant( array $prices ): void
+	{
+		$minPriceId = array_keys( $prices, min( $prices ) );
+		$this->cheapestVariantId = new VariantId(
+			$minPriceId[0]
+		);
+	}
+
+	private function calculateAveragePrice( array $prices ): void
+	{
+		$average = array_sum( $prices ) / count( $prices );
+		$average = (int) round( $average, 0 );
+		$this->averagePrice = new VariantPrice(
+			$average
+		);
+	}
+
+	private function calculateAverageDiscount( array $discounts ): void
+	{
+		$average = array_sum( $discounts ) / count( $discounts );
+		$average = (int) round( $average, 0 );
+		$this->averageDiscount = new Discount(
+			$average
+		);
 	}
 }

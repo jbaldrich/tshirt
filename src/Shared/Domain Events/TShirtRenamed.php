@@ -11,9 +11,9 @@
 namespace JacoBaldrich\TShirt\Shared;
 
 /**
- * T-shirt created domain event.
+ * T-shirt renamed domain event.
  */
-class TShirtCreated implements Event
+class TShirtRenamed implements Event
 {
 	private $id;
 	private $name;

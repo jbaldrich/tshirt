@@ -49,7 +49,7 @@ final class VariantFinder
 	/**
 	 * Find a T-shirt Variants by ID.
 	 *
-	 * @param VariantId $tShirtId
+	 * @param VariantId $id
 	 */
 	public function find( VariantId $id ): ?Variant
 	{

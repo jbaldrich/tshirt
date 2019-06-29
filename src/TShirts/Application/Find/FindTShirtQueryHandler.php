@@ -14,6 +14,7 @@ use JacoBaldrich\TShirt\Shared\TShirtId;
 use JacoBaldrich\TShirt\TShirts\Application\TShirtFinder;
 use JacoBaldrich\TShirt\TShirts\Application\FindTShirtQuery;
 use JacoBaldrich\TShirt\TShirts\Domain\TShirtResponseConverter;
+use JacoBaldrich\TShirt\TShirts\Domain\TShirtResponse;
 
 /**
  * TShirt Find Query Handler.
@@ -27,7 +28,7 @@ final class FindTShirtQueryHandler
 		$this->finder = $finder;
 	}
 
-	public function handle( FindTShirtQuery $query ): ?array
+	public function handle( FindTShirtQuery $query ): ?TShirtResponse
 	{
 		$tShirtId = new TShirtId( $query->tShirtId() );
 

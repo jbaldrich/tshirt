@@ -29,6 +29,7 @@ use JacoBaldrich\TShirt\Variants\Application\ChangePriceCommandHandler;
 use JacoBaldrich\TShirt\Variants\Application\RemoveVariantCommandHandler;
 use JacoBaldrich\TShirt\Variants\Application\CreateVariantCommandHandler;
 use JacoBaldrich\TShirt\Variants\Application\ChangeOfferPriceCommandHandler;
+use JacoBaldrich\TShirt\Shared\VariantPriceChanged;
 
 /**
  * Tests for variant use cases.
@@ -100,11 +101,28 @@ final class VariantTest extends TestBase
 		);
 		// When:
 		$handler->handle( $command );
+		$actualVariant = $repository->find( new VariantId( $this->id ) );
+		$events = $actualVariant->pullDomainEvents();
 		// Then:
 		$this->assertEquals(
-			$variant,
-			$repository->find( new VariantId( $this->id ) )
+			$events,
+			[
+				new VariantPriceChanged(
+					$this->tShirtId,
+					$this->id,
+					(string) $this->offerPrice,
+					10000 - (int) round(
+						$this->offerPrice / $newPrice * 10000,
+						2
+					)
+				)
+			]
 		);
+		$this->assertEquals(
+			$variant,
+			$actualVariant
+		);
+		$this->tearDown();
 	}
 
 	/**
@@ -130,10 +148,26 @@ final class VariantTest extends TestBase
 		);
 		// When:
 		$handler->handle( $command );
+		$actualVariant = $repository->find( new VariantId( $this->id ) );
+		$events = $actualVariant->pullDomainEvents();
 		// Then:
 		$this->assertEquals(
+			$events,
+			[
+				new VariantPriceChanged(
+					$this->tShirtId,
+					$this->id,
+					(string) $this->offerPrice,
+					10000 - (int) round(
+						$this->offerPrice / $newPrice * 10000,
+						2
+					)
+				)
+			]
+		);
+		$this->assertEquals(
 			$variant,
-			$repository->find( new VariantId( $this->id ) )
+			$actualVariant
 		);
 	}
 
