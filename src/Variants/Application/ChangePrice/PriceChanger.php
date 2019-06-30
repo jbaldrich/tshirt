@@ -71,7 +71,7 @@ final class PriceChanger
 		$this->repository->save( $variant );
 	}
 
-	private function ensureVariantIsNotNull( $variant )
+	private function ensureVariantIsNotNull( $variant ): void
 	{
 		if ( is_null( $variant ) ) {
 			throw new \Exception(

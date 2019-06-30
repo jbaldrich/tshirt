@@ -11,7 +11,7 @@
 namespace JacoBaldrich\TShirt\Shared;
 
 /**
- * T-shirt renamed domain event.
+ * Variants updated domain event.
  */
 class VariantsUpdated implements Event
 {

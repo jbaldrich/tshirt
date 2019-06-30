@@ -48,7 +48,7 @@ final class TShirtRenamer
 	 * @param TShirtName $name
 	 * @return void
 	 */
-	public function rename( TShirtId $id, TShirtName $name )
+	public function rename( TShirtId $id, TShirtName $name ): void
 	{
 		$tShirt = $this->finder->find( $id );
 		$this->ensureTShirtIsNotNull( $tShirt );
@@ -56,7 +56,7 @@ final class TShirtRenamer
 		$this->repository->save( $tShirt );
 	}
 
-	private function ensureTShirtIsNotNull( $tShirt )
+	private function ensureTShirtIsNotNull( $tShirt ): void
 	{
 		if ( is_null( $tShirt ) ) {
 			throw new \Exception(

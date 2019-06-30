@@ -35,7 +35,7 @@ final class TShirtFinder
 	}
 
 	/**
-	 * Find a TShirts by its ID.
+	 * Find a TShirt by its ID.
 	 *
 	 * @param TShirtId $tShirtId
 	 */

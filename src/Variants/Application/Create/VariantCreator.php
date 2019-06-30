@@ -53,7 +53,7 @@ final class VariantCreator
 		VariantSize $size,
 		VariantPrice $price,
 		?VariantPrice $offerPrice = null
-	)
+	): void
 	{
 		$variant = new Variant(
 			$tShirtId,

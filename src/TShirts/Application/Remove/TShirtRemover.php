@@ -47,14 +47,14 @@ final class TShirtRemover
 	 * @param TShirtName $name
 	 * @return void
 	 */
-	public function remove( TShirtId $id )
+	public function remove( TShirtId $id ): void
 	{
 		$tShirt = $this->finder->find( $id );
 		$this->ensureTShirtIsNotNull( $tShirt );
 		$this->repository->remove( $tShirt );
 	}
 
-	private function ensureTShirtIsNotNull( $tShirt )
+	private function ensureTShirtIsNotNull( $tShirt ): void
 	{
 		if ( is_null( $tShirt ) ) {
 			throw new \Exception(

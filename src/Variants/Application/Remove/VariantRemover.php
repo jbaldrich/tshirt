@@ -46,14 +46,14 @@ final class VariantRemover
 	 * @param VariantId $id
 	 * @return void
 	 */
-	public function remove( VariantId $id )
+	public function remove( VariantId $id ): void
 	{
 		$variant = $this->finder->find( $id );
 		$this->ensureVariantIsNotNull( $variant );
 		$this->repository->remove( $variant );
 	}
 
-	private function ensureVariantIsNotNull( $variant )
+	private function ensureVariantIsNotNull( $variant ): void
 	{
 		if ( is_null( $variant ) ) {
 			throw new \Exception(
